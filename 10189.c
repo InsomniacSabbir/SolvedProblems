@@ -1,0 +1,60 @@
+#include<stdio.h>
+#include<string.h>
+int main()
+{
+    int T,m,n,a,i,j,x=1,b;
+    char str[105][105],countt='0';
+    while(scanf("%d%d",&n,&m)==2&&m!=0&&n!=0)
+    {
+        getchar();
+        for(i=1;i<=n;i++)
+        {
+            for(j=1;j<=m;j++)
+            {
+                scanf("%c",&str[i][j]);
+            }
+            getchar();
+        }
+        for(a=0;a<=n+1;a++)
+        {
+            str[a][0]='.';
+            str[a][m+1]='.';
+        }
+        for(b=0;b<=m+1;b++)
+        {
+            str[0][b]='.';
+            str[n+1][b]='.';
+        }
+        for(i=1;i<=n;i++)
+        {
+            for(j=1;j<=m;j++)
+            {
+                countt='0';
+                if(str[i][j]=='.')
+                {
+                    if(str[i+1][j]=='*')countt++;
+                    if(str[i][j+1]=='*')countt++;
+                    if(str[i-1][j]=='*')countt++;
+                    if(str[i][j-1]=='*')countt++;
+                    if(str[i+1][j+1]=='*')countt++;
+                    if(str[i-1][j-1]=='*')countt++;
+                    if(str[i-1][j+1]=='*')countt++;
+                    if(str[i+1][j-1]=='*')countt++;
+                    str[i][j]=countt;
+                }
+            }
+        }
+        if(x!=1)printf("\n");
+        printf("Field #%d:\n",x);
+        for(a=1;a<=n;a++)
+        {
+            for(b=1;b<=m;b++)
+            {
+                printf("%c",str[a][b]);
+            }
+            printf("\n");
+        }
+        x++;
+    }
+    return 0;
+}

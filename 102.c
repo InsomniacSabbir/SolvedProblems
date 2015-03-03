@@ -1,0 +1,163 @@
+#include<stdio.h>
+int main()
+{
+    int a,b,c,d1,d2,d3,d4,d5,d6,e,str[11],min=999999999;
+    char c1='Z',c2='Z',c3='Z';
+    while(scanf("%d",&str[0])!=EOF)
+    {
+        min=999999999;
+        for(a=1;a<=8;a++)
+        {
+            scanf("%d",&str[a]);
+        }
+        d1=str[3]+str[6]+str[2]+str[8]+str[1]+str[4];//BCG
+        d2=str[3]+str[6]+str[1]+str[7]+str[2]+str[5];//BGC
+        d3=str[5]+str[8]+str[1]+str[7]+str[0]+str[3];//CGB
+        d4=str[5]+str[8]+str[0]+str[6]+str[1]+str[4];//CBG
+        d5=str[4]+str[7]+str[2]+str[8]+str[0]+str[3];//GCB
+        d6=str[4]+str[7]+str[0]+str[6]+str[2]+str[5];//GBC
+        if(d1<=min)
+        {
+        if(d1<min)
+            {
+            min=d1;
+            c1='B';
+            c2='C';
+            c3='G';
+            }
+            else if(d1==min)
+            {
+                if((c1>'B')||(c1=='B'&&c2>'C'))
+                {
+            min=d1;
+            c1='B';
+            c2='C';
+            c3='G';
+                }
+                else
+                {
+
+                }
+            }
+        }
+        if(d2<=min)
+        {
+        if(d2<min)
+            {
+            min=d2;
+            c1='B';
+            c2='G';
+            c3='C';
+            }
+            else if(d2==min)
+            {
+                if((c1>'B')||(c1=='B'&&c2>'G'))
+                {
+            min=d2;
+            c1='B';
+            c2='G';
+            c3='C';
+                }
+                else
+                {
+
+                }
+            }
+        }
+        if(d3<=min)
+        {
+        if(d3<min)
+            {
+            min=d3;
+            c1='C';
+            c2='G';
+            c3='B';
+            }
+            else if(d3==min)
+            {
+                if((c1>'C')||(c1=='C'&&c2>'G'))
+                {
+            min=d3;
+            c1='C';
+            c2='G';
+            c3='B';
+                }
+                else
+                {
+
+                }
+            }
+        }
+        if(d4<=min)
+        {
+        if(d4<min)
+            {
+            min=d4;
+            c1='C';
+            c2='B';
+            c3='G';
+            }
+            else if(d4==min)
+            {
+                if((c1>'C')||(c1=='C'&&c2>'B'))
+                {
+            min=d4;
+            c1='C';
+            c2='B';
+            c3='G';
+                }
+                else
+                {
+
+                }
+            }
+        }
+        if(d5<=min)
+        {
+        if(d5<min)
+            {
+            min=d5;
+            c1='G';
+            c2='C';
+            c3='B';
+            }
+            else if(d5==min)
+            {
+                if((c1>'G')||(c1=='G'&&c2>'C'))
+                {
+            min=d5;
+            c1='G';
+            c2='C';
+            c3='B';
+                }
+                else
+                {
+                }
+            }
+        }
+        if(d6<=min)
+        {
+        if(d6<min)
+            {
+            min=d6;
+            c1='G';
+            c2='B';
+            c3='C';
+            }
+            else if(d5==min)
+            {
+                if((c1>'G')||(c1=='G'&&c2>'B'))
+                {
+            min=d5;
+            c1='G';
+            c2='B';
+            c3='C';
+                }
+                else
+                {
+                }
+            }
+        }
+        printf("%c%c%c %d\n",c1,c2,c3,min);
+    }
+}

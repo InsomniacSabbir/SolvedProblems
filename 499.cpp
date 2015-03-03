@@ -1,0 +1,94 @@
+#include<stdio.h>
+#include<string.h>
+int main()
+{
+    //printf("%d\n",'a');
+    int i,j,n,a,b,k,ul,ll,maxi,valueu[1000],valuel[1000],tempn,h;
+    char temp,str[1000],u[1000],l[1000];
+    while(gets(str))
+    {
+        memset(valueu,0,sizeof(valueu));
+        memset(valuel,0,sizeof(valuel));
+        n=strlen(str);
+        for(i=0;i<n;i++)
+        {
+            if(str[i]>='A'&&str[i]<='Z')
+            {
+                u[str[i]-64]=str[i];
+                valueu[str[i]-64]++;
+            }
+            if(str[i]>='a'&&str[i]<='z')
+            {
+                l[str[i]-96]=str[i];
+                valuel[str[i]-96]++;
+            }
+        }
+        for(h=1;h<26;h++)
+        {
+            for(j=h+1;j<=26;j++)
+            {
+                if(valueu[h]<valueu[j])
+                {
+                    tempn=valueu[h];
+                    valueu[h]=valueu[j];
+                    valueu[j]=tempn;
+                    temp=u[h];
+                    u[h]=u[j];
+                    u[j]=temp;
+                }
+                if(valuel[h]<valuel[j])
+                {
+                    tempn=valuel[h];
+                    valuel[h]=valuel[j];
+                    valuel[j]=tempn;
+                    temp=l[h];
+                    l[h]=l[j];
+                    l[j]=temp;
+                }
+            }
+        }
+        if(valueu[1]==valuel[1])
+        {
+            maxi=valueu[1];
+            k=1;
+            while(valueu[k]==maxi)
+              {
+                printf("%c",u[k]);
+                k++;
+              }
+            k=1;
+            while(valuel[k]==maxi)
+            {
+                printf("%c",l[k]);
+                k++;
+            }
+            printf(" %d\n",maxi);
+        }
+        else
+        {
+            if(valueu[1]<valuel[1])
+            {
+                maxi=valuel[1];
+                k=1;
+                while(valuel[k]==maxi)
+                {
+                    printf("%c",l[k]);
+                    k++;
+                }
+                printf(" %d\n",maxi);
+            }
+            else if(valueu[1]>valuel[1])
+            {
+                maxi=valueu[1];
+                k=1;
+                while(valueu[k]==maxi)
+                {
+                    printf("%c",u[k]);
+                    k++;
+                }
+                printf(" %d\n",maxi);
+            }
+        }
+    }
+    return 0;
+}
